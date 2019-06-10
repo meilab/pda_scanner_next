@@ -1,8 +1,8 @@
-name: pda_scanner
-description: This is a scanning plug-in for PDA(Dong ji Xiao ma ge) to Listen for scanned events and get results.
+name: pda_scanner_next
+description: This is a scanning plug-in for PDA to Listen for scanned events and get results.
 version: 0.1.4
-author: Shusheng <leyansorosame@gmail.com>
-homepage: https://github.com/leyan95/pda_scanner
+author: andy <360475097@qq.com>
+homepage: https://github.com/m430/pda_scanner
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -13,5 +13,5 @@ dependencies:
 
 flutter:
   plugin:
-    androidPackage: com.shinow.pda_scanner
+    androidPackage: com.andy.pda_scanner
     pluginClass: PdaScannerPlugin

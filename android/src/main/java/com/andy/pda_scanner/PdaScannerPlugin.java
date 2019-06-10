@@ -1,4 +1,4 @@
-package com.shinow.pda_scanner;
+package com.andy.pda_scanner;
 
 import android.content.IntentFilter;
 import android.app.Activity;
@@ -11,8 +11,10 @@ import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.PluginRegistry;
 
 public class PdaScannerPlugin implements EventChannel.StreamHandler {
-  public static final String CHANNEL = "com.shinow.pda_scanner/plugin";
-  private static final String SCAN_ACTION = "com.android.server.scannerservice.broadcast";
+  public static final String CHANNEL = "com.andy.pda_scanner/plugin";
+  public static final String SCAN_ACTION = "techain.intent.action.DISPLAY_SCAN_RESULT";
+  public static final String ACTION_SCAN_UP = "techain.intent.action.KEY_SCAN_UP";
+  public static final String DECODE_DATA = "decode_data";
 
   private static EventChannel.EventSink eventSink;
 
@@ -21,7 +23,7 @@ public class PdaScannerPlugin implements EventChannel.StreamHandler {
     @Override
     public void onReceive(Context context, Intent intent) {
       if (SCAN_ACTION.equals(intent.getAction())) {
-        String code = intent.getStringExtra("scannerdata");
+        String code = intent.getStringExtra(DECODE_DATA);
         eventSink.success(code);
       } else {
         Log.i("PdaScannerPlugin", "NoSuchAction");
@@ -31,6 +33,8 @@ public class PdaScannerPlugin implements EventChannel.StreamHandler {
 
   private PdaScannerPlugin(Activity activity) {
     this.activity = activity;
+    Intent intent = new Intent(ACTION_SCAN_UP);
+    activity.sendBroadcast(intent);
     IntentFilter intentFilter = new IntentFilter();
     intentFilter.addAction(SCAN_ACTION);
     intentFilter.setPriority(Integer.MAX_VALUE);

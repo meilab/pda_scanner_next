@@ -20,7 +20,7 @@ dependencies:
 
 ## Usage example
 ```dart
-static const scannerPlugin = const EventChannel('com.shinow.pda_scanner/plugin');
+static const scannerPlugin = const EventChannel('com.andy.pda_scanner/plugin');
 StreamSubscription _subscription;
 var _code;
 

@@ -1,4 +1,4 @@
-group 'com.shinow.pda_scanner'
+group 'com.andy.pda_scanner'
 version '1.0-SNAPSHOT'
 
 buildscript {
